@@ -1,7 +1,5 @@
 # Review Guidelines
 
-Enriched from analysis of 120+ merged PRs.
-
 ## Review Focus Areas
 
 ### Deterministic Output
@@ -31,7 +29,7 @@ Enriched from analysis of 120+ merged PRs.
 - Use `strings.Contains` over regex for simple checks
 - Use `switch` over `if-else` chains for type dispatching
 - Fill default directory in options: `dir: filepath.Join(util.CacheDir(), "extract", "<name>")`
-- Add `omitempty` on optional JSON fields
+- Add `omitempty` on optional string/slice/map/pointer fields; use `omitzero` on struct and `time.Time` fields
 - Sort `maps.Keys()` / `slices.Collect()` results when output is logged, cached, or compared
 - Standardize naming: don't mix suffixes (e.g., `Cache` vs `Map` — pick one)
 - Use `internal/` package for code that is shared within a module but should not be importable externally

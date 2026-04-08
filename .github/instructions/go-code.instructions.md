@@ -73,7 +73,7 @@ description: "Go code conventions for vuls-data-update: deterministic JSON, util
 
 ## JSON Field Tags
 
-- Use `omitempty` on optional fields
+- Use `omitempty` on optional string/slice/map/pointer fields; use `omitzero` on struct and `time.Time` fields
 - `encoding/json/v2` handles struct tags differently from v1 — no special handling needed for v2-style tags
 
 ## CI Integration
