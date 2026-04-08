@@ -35,8 +35,35 @@ description: "Go code conventions for vuls-data-update: deterministic JSON, util
   - `pkg/cmd/` (Cobra layer): `"failed to ..."` prefix — `"failed to extract almalinux errata"`
   - Validation: `"unexpected X. expected: %q, actual: %q"` pattern
 - Sentinel errors (`errors.New`) are rare; check with `errors.Is()`
+  - Use specific sentinel errors (e.g., `ErrNotFoundX`) rather than generic ones when callers need to distinguish error types
 - Non-fatal errors: `slog.Warn(...)` + skip (e.g., invalid CPE, unparseable score)
 - Bare `return err` when no useful context to add
+- Short-circuit early: return `nil, nil` when there is nothing to do, don't let callers trip over validation of empty inputs
+
+## Slice and Map Idioms
+
+- Pre-allocate slices when capacity is known: `make([]T, 0, len(x))`
+- For complex capacity: `make([]T, 0, func() int { cap := 0; for ...; return cap }())`
+- Avoid `*[]T` (pointer to slice) for mutation — pass slice directly and return
+- Use `strings.Contains` over regex for simple substring checks
+- Use `switch` over `if-else` chains for type dispatching
+- Sort `maps.Keys()` / `slices.Collect()` results when output is logged, cached, or compared — map iteration order is random
+
+## Options Pattern
+
+- New data sources use functional options: `WithDir(dir string) Option`
+- Always fill the default directory in the options struct: `dir: filepath.Join(util.CacheDir(), "extract", "<domain>/<name>")`
+- Don't leave default paths empty
+
+## JSON Field Tags
+
+- Use `omitempty` on optional fields
+- `encoding/json/v2` handles struct tags differently from v1 — no special handling needed for v2-style tags
+
+## CI Integration
+
+- New data sources must be added as CI targets in `.github/workflows/extract.yml`
+- Don't leave CI targets commented out
 
 ## Cleanup Helpers
 

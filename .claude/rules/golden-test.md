@@ -53,8 +53,8 @@ for _, tt := range tests {
 }
 ```
 
-- **Single-case**: fixture/golden パスは `testdata/fixtures`, `testdata/golden` の直下（サブディレクトリなし）
-- **Multi-case**: テストケースごとに `testdata/fixtures/<name>/`, `testdata/golden/<name>/` を struct フィールドで明示指定
+- **Single-case**: fixture/golden paths are directly under `testdata/fixtures`, `testdata/golden` (no subdirectories)
+- **Multi-case**: each test case explicitly specifies `testdata/fixtures/<name>/`, `testdata/golden/<name>/` in struct fields
 
 ### Where Used
 
