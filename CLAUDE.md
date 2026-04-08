@@ -36,6 +36,14 @@ go test ./...
 - Review: `.claude/rules/review.md`
 - Git workflow: `.claude/rules/commit-pr.md`
 
-## Sync
+## Sync (.github/instructions/ → .claude/rules/)
 
-Run `make sync-instructions` after editing `.github/instructions/` to regenerate `.claude/rules/`.
+After editing `.github/instructions/*.instructions.md`, regenerate `.claude/rules/`:
+
+```sh
+mkdir -p .claude/rules
+for f in .github/instructions/*.instructions.md; do
+  base=$(basename "$f" .instructions.md)
+  sed '/^---$/,/^---$/d' "$f" > ".claude/rules/$base.md"
+done
+```
