@@ -23,7 +23,7 @@ feat(extract/alma): add errata extraction (#174)
 fix(fetch/suse/oval): handle missing CPE entries (#640)
 refactor(extract/types): unify advisory sort (#694)
 chore!(extract/types): rename Segment to Repository (#708)
-build(deps): bump github.com/pkg/errors from 0.9.1 to 0.9.2 (#500)
+build(deps): bump github.com/go-git/go-git/v5 from 5.17.0 to 5.17.1 (#737)
 test(extract/ubuntu): add golden tests for USN fixtures (#693)
 docs: update README with new data source list (#750)
 ```

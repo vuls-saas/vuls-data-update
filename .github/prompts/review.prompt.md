@@ -9,9 +9,9 @@ Review the changes in the current branch against the base branch.
 
 ### Phase 1: Gather Changes
 
-1. Determine the base branch (default: `origin/nightly`)
-2. Get the diff: `git diff origin/nightly...HEAD`
-3. List changed files: `git diff --name-only origin/nightly...HEAD`
+1. Determine the base branch from the PR target, or default to `origin/nightly`
+2. Get the diff: `git diff <base>...HEAD`
+3. List changed files: `git diff --name-only <base>...HEAD`
 
 ### Phase 2: Review
 

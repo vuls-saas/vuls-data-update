@@ -9,7 +9,7 @@ description: "Go code conventions for vuls-data-update: deterministic JSON, util
 - Use `go fix ./...` to apply automated modernizations. Key fixers include:
   - `any` over `interface{}`
   - `min`/`max` builtins over if/else
-  - `new(expr)` (Go 1.26) over `&Type{}`
+  - `new(expr)` over `&Type{}`
   - `slices.Contains` over manual loops
   - `slices.Sort` over `sort.Slice` for basic types
   - `strings.CutPrefix`/`strings.Cut` over `HasPrefix`+`TrimPrefix` / `Index`+slice
