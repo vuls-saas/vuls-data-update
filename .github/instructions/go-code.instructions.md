@@ -3,6 +3,22 @@ description: "Go code conventions for vuls-data-update: deterministic JSON, util
 ---
 # Go Code Conventions
 
+## Go Version and Modern Idioms
+
+- Check `go.mod` for the required Go version. Write code using modern idioms available at that version — do not use patterns superseded by it.
+- Use `go fix ./...` to apply automated modernizations. Key fixers include:
+  - `any` over `interface{}`
+  - `min`/`max` builtins over if/else
+  - `new(expr)` (Go 1.26) over `&Type{}`
+  - `slices.Contains` over manual loops
+  - `slices.Sort` over `sort.Slice` for basic types
+  - `strings.CutPrefix`/`strings.Cut` over `HasPrefix`+`TrimPrefix` / `Index`+slice
+  - `strings.SplitSeq`/`strings.FieldsSeq` iterators over `Split`/`Fields` when ranging
+  - `fmt.Appendf` over `[]byte(fmt.Sprintf(...))`
+  - `t.Context()` over `context.WithCancel` in tests
+  - `wg.Go` over `wg.Add(1)` / `go` / `wg.Done()`
+- When bumping `go` directive in `go.mod`, run `go fix ./...` and commit the result together.
+
 ## Deterministic JSON Output
 
 - Use `encoding/json/v2` with `json.Deterministic(true)` and tab indent
