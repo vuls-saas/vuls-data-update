@@ -1,6 +1,6 @@
 # Review Guidelines
 
-Enriched from analysis of 120+ merged PRs. See `docs/review/checklist.md` for the full checklist.
+Enriched from analysis of 120+ merged PRs.
 
 ## Review Focus Areas
 
@@ -31,9 +31,11 @@ Enriched from analysis of 120+ merged PRs. See `docs/review/checklist.md` for th
 - Use `strings.Contains` over regex for simple checks
 - Use `switch` over `if-else` chains for type dispatching
 - Fill default directory in options: `dir: filepath.Join(util.CacheDir(), "extract", "<name>")`
-- Add `omitempty` on optional JSON fields- Sort `maps.Keys()` / `slices.Collect()` results when output is logged, cached, or compared
+- Add `omitempty` on optional JSON fields
+- Sort `maps.Keys()` / `slices.Collect()` results when output is logged, cached, or compared
 - Standardize naming: don't mix suffixes (e.g., `Cache` vs `Map` — pick one)
 - Use `internal/` package for code that is shared within a module but should not be importable externally
+
 ### Golden Test Stability
 - If golden diffs appear, verify they are intentional
 - Widespread unexpected diffs usually indicate a sorting/determinism issue

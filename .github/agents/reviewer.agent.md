@@ -15,7 +15,7 @@ Load the review guidelines before starting:
 
 ## Workflow
 
-1. **Identify changes**: Diff against the base branch (`origin/nightly` by default). Use `git diff origin/nightly...HEAD` to get all changes
+1. **Identify changes**: Diff against the base branch. Determine the base from the PR target or default to `origin/nightly`. Use `git diff <base>...HEAD` to get all changes
 2. **Categorize files**: Group by area (types, extract, fetch, cmd, test)
 3. **Review each file** against the checklist:
    - Deterministic JSON output (Sort/Compare, util.Write)

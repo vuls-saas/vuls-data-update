@@ -31,6 +31,8 @@ go test ./...
 
 ## Rules & Docs
 
+Files under `.claude/rules/` are **generated** from `.github/instructions/` — do not edit them directly.
+
 - Coding: `.claude/rules/go-code.md`
 - Golden tests: `.claude/rules/golden-test.md`
 - Review: `.claude/rules/review.md`
